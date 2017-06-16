@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/dataTables.css">
+</head>
+<body>
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SAT Reminder</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a href="/add_products">Add SAT</a></li>
+        <li class="active"><a href="/">View SAT</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span>{{ names }}</a></li>
+      <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+ <div class="container">
+  <div class="jumbotron" id="other-other-other-color">
+    <h1>Get your Scholarship in time!</h1>
+    <p>View your added SAT Exams due for completion</p>
+  </div>
+</div>
+
+<div class="container">
+<table border="1px" class="table table-striped" id="datatable">
+
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>SAT </th>
+        <th>Deadline Date</th>
+        <th>/</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for x in product %}
+    <tr>
+    <td>{{ x.name }}</td>
+    <td>{{ x.sat }}</td>
+    <td>{{ x.date }}</td>
+    <td><a class="btn btn-danger" href="/delete/{{ x.id }}">delete</a></td>
+    </tr>
+
+{% endfor %}
+
+
+</tbody>
+</table>
+
+</div>
+
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/dataTables.js"></script>
+<script>
+    //to initialize the table
+    $(document).ready(function() {
+    $('#datatable').DataTable();
+} );
+
+</script>
+</body>
+</html>
