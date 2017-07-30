@@ -45,10 +45,10 @@ def login():
                 session["id"] = user.id
                 return redirect(url_for("add_products"))
             else:
-                flash("Wrong username or password!")
+                flash("Wrong username or password")
         except Exception:
             print("User does not exist")
-            flash("Wrong username or password")
+            flash("Please create an account first!")
     return render_template("login.html", form=form)
 
 
